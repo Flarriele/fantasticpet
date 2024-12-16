@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema PetShop</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="petshop.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="flex flex-col gap-6 justify-between bg-slate-50">
+    <div class="w-full">
+      <header class="flex gap-4 justify-between items-center w-full bg-white">
+        <a href="/" class="max-w-[300px]">
+          <img src="./assets/banner-fantasticpets.png" />
+        </a>
+        <form
+          id="searchForm"
+          class="flex shadow rounded-lg overflow-hidden items-center w-full max-w-[500px]"
+        >
+          <select name="options" class="py-3 max-h-[42px] px-4 bg-white border">
+            <option value="tutor">Tutor</option>
+            <option value="pet">Pet</option>
+          </select>
+          <div
+            class="relative max-h-[42px] overflow-hidden bg-white border-y border-r w-full"
+          >
+            <input
+              required
+              name="query"
+              class="py-3 px-4 h-full w-full outline-0"
+              placeholder="Buscar por tutor ou pet"
+            />
+            <button
+              class="absolute right-0 top-0 h-full p-3 hover:bg-gray-100 text-gray-700"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-4 h-4"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </button>
+          </div>
+        </form>
+        <button
+          class="bg-orange-500 px-4 py-3 rounded-lg text-white whitespace-nowrap"
+        >
+          Novo atendimento
+        </button>
+      </header>
+
+      <nav class="menu-container">
+        <div class="menu-item" onclick="showSection('home')">
+          <a>Home</a>
+        </div>
+        <div
+          class="menu-item whitespace-nowrap"
+          onclick="showSection('novo-atendimento')"
+        >
+          <a>Novo Atendimento</a>
+        </div>
+        <div
+          class="menu-item whitespace-nowrap"
+          onclick="showSection('proximo-atendimento')"
+        >
+          <a>Próximo Atendimento</a>
+        </div>
+
+        <div
+          class="menu-item whitespace-nowrap"
+          onclick="showSection('lista-tutores')"
+        >
+          <a>Lista Tutores</a>
+        </div>
+        <div
+          class="menu-item whitespace-nowrap"
+          onclick="showSection('lista-pets')"
+        >
+          <a>Lista Pets</a>
+        </div>
+        <div
+          class="menu-item whitespace-nowrap"
+          onclick="showSection('lista-atendimentos')"
+        >
+          <a>Lista Atendimentos</a>
+        </div>
+        <div
+          class="menu-item whitespace-nowrap"
+          onclick="showSection('finalizar-atendimento')"
+        >
+          <a>Finalizar Atendimentos</a>
+        </div>
+        <div
+          class="menu-item whitespace-nowrap"
+          onclick="showSection('cancelar-atendimento')"
+        >
+          <a>Cancelar Atendimentos</a>
+        </div>
+      </nav>
+    </div>
+    <div class="flex flex-col gap-6 p-6 items-start justify-start h-full">
+      <section
+        id="cadastrar-tutor"
+        class="bg-white p-6 rounded-xl flex items-start justify-center flex-col gap-4 w-full"
+        style="display: none"
+      >
+        <h2 class="text-lg font-semibold">Preencha os Dados do Tutor</h2>
+        <form
+          id="formCadastroTutor"
+          class="w-full max-w-[700px] flex flex-col gap-4"
+        >
+          <div class="flex flex-col gap-1 w-full">
+            <label for="nomeTutor" class="form-label">Nome</label>
+            <input
+              type="text"
+              class="border px-4 py-3 rounded-lg shadow w-full"
+              id="nomeTutor"
+              placeholder="Digite o nome completo"
+              required
+            />
+          </div>
+          <div class="flex flex-col gap-1 w-full">
+            <label for="celularTutor" class="form-label"
+              >Número de Celular</label
+            >
+            <input
+              type="tel"
+              class="border px-4 py-3 rounded-lg shadow w-full"
+              id="celularTutor"
+              placeholder="(XX) XXXXX-XXXX"
+              required
+            />
+          </div>
+          <div class="flex flex-col gap-1 w-full">
+            <label for="enderecoTutor" class="form-label">Endereço</label>
+            <textarea
+              class="border px-4 py-3 rounded-lg shadow w-full"
+              id="enderecoTutor"
+              rows="3"
+              placeholder="Digite o endereço completo"
+              required
+            ></textarea>
+          </div>
+          <div class="text-end">
+            <button
+              type="reset"
+              class="py-3 px-4 bg-gray-50 hover:bg-gray-200 rounded-lg"
+            >
+              Limpar
+            </button>
+            <button
+              type="submit"
+              class="py-3 px-4 bg-sky-500 hover:bg-sky-600 text-white rounded-lg"
+            >
+              Cadastrar
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section
+        id="cadastrar-pet"
+        class="bg-white rounded-xl p-4 p-6 flex items-start justify-center flex-col gap-4 w-full"
+        style="display: none"
+      >
+        <h2 class="text-lg font-semibold">Cadastrar Pet</h2>
+        <form id="formPet" class="w-full max-w-[700px] flex flex-col gap-4">
+          <div class="flex flex-col gap-1 w-full">
+            <label for="nomePet" class="form-label">Nome do Pet</label>
+            <input
+              type="text"
+              class="border px-4 py-3 rounded-lg shadow w-full"
+              id="nomePet"
+              placeholder="Digite o nome"
+              required
+            />
+          </div>
+          <div class="flex flex-col gap-1 w-full">
+            <label for="tipoPet" class="form-label">Tipo do Pet</label>
+            <input
+              type="text"
+              class="border px-4 py-3 rounded-lg shadow w-full"
+              id="tipoPet"
+              placeholder="Digite o tipo"
+              required
+            />
+          </div>
+          <div class="flex flex-col gap-1 w-full">
+            <label for="idadePet" class="form-label">Idade do Pet</label>
+            <input
+              type="number"
+              class="border px-4 py-3 rounded-lg shadow w-full"
+              id="idadePet"
+              placeholder="Digite a idade"
+              required
+            />
+          </div>
+          <div class="flex flex-col gap-1 w-full">
+            <label for="pesoPet" class="form-label">Peso do Pet</label>
+            <input
+              type="number"
+              class="border px-4 py-3 rounded-lg shadow w-full"
+              id="pesoPet"
+              placeholder="Digite o peso"
+              required
+            />
+          </div>
+          <div class="flex flex-col gap-1 w-full">
+            <label for="racaPet" class="form-label">Raça do Pet</label>
+            <input
+              type="text"
+              class="border px-4 py-3 rounded-lg shadow w-full"
+              id="racaPet"
+              placeholder="Digite a raça"
+              required
+            />
+          </div>
+          <div class="flex flex-col gap-1 w-full">
+            <label for="tutorPet" class="form-label">Escolher Tutor:</label>
+            <select
+              id="tutorPet"
+              class="form-select form-select-sm mb-3"
+              required
+            >
+              <option selected>Não há tutores cadastrados</option>
+            </select>
+          </div>
+          <div class="text-end">
+            <button
+              type="reset"
+              class="py-3 px-4 bg-gray-50 hover:bg-gray-200 rounded-lg"
+            >
+              Limpar
+            </button>
+            <button
+              type="submit"
+              class="py-3 px-4 bg-sky-500 hover:bg-sky-600 text-white rounded-lg"
+            >
+              Cadastrar
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Novo Atendimento -->
+      <section
+        id="novo-atendimento"
+        class="card shadow p-4 p-6 flex items-center justify-center flex-col gap-4 w-full"
+        style="display: none"
+      >
+        <h2>Novo Atendimento</h2>
+        <form id="formAtendimento">
+          <div class="flex flex-col gap-1 w-full">
+            <label for="petAtendimento" class="form-label">Escolher Pet:</label>
+            <select
+              id="petAtendimento"
+              class="form-select form-select-sm mb-3"
+              required
+            >
+              <option value="">Não há pets cadastrados</option>
+            </select>
+          </div>
+          <div class="flex flex-col gap-1 w-full">
+            <label for="descricaoAtendimento" class="form-label"
+              >Descrição do Atendimento</label
+            >
+            <input
+              id="descricaoAtendimento"
+              type="text"
+              class="border px-4 py-3 rounded-lg shadow w-full"
+              required
+            />
+          </div>
+          <div class="text-end">
+            <button type="submit" class="btn btn-outline-primary">
+              Cadastrar Atendimento
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Próximo Atendimento -->
+      <section
+        id="proximo-atendimento"
+        class="p-6 flex items-center justify-center flex-col gap-4 w-full"
+        style="display: none"
+      >
+        <h2>Próximo Atendimento</h2>
+        <div id="proximoAtendimento"></div>
+      </section>
+
+      <!-- Buscar Tutor -->
+      <section
+        id="resultadosDaBusca"
+        style="display: none"
+        class="p-6 flex items-start rounded-xl bg-white justify-center flex-col gap-4 w-full"
+      >
+        <h2 class="font-semibold text-lg">Resultados da busca</h2>
+        <div
+          id="conteudoResultadoBusca"
+          class="flex items-center bg-white justify-center flex-col gap-4 w-full"
+        ></div>
+      </section>
+
+      <!-- Lista de Tutores -->
+      <section
+        id="lista-tutores"
+        class="p-6 bg-white rounded-xl flex items-start justify-center flex-col gap-4 w-full"
+        style="display: none"
+      >
+        <div class="flex items-center justify-between w-full">
+          <h2 class="font-semibold text-lg">Lista de Tutores</h2>
+          <button
+            class="p-3 rounded-lg bg-gray-100 hover:bg-gray-200"
+            onclick="showSection('cadastrar-tutor')"
+          >
+            Cadastrar
+          </button>
+        </div>
+        <div id="listaTutores" class="w-full flex flex-col gap-4"></div>
+      </section>
+
+      <!-- Lista de Pets -->
+      <section
+        id="lista-pets"
+        class="p-6 bg-white rounded-xl flex items-start justify-center flex-col gap-4 w-full"
+        style="display: none"
+      >
+        <div class="flex items-center justify-between w-full">
+          <h2 class="font-semibold text-lg">Lista de Pets</h2>
+          <button
+            class="p-3 rounded-lg bg-gray-100 hover:bg-gray-200"
+            onclick="showSection('cadastrar-pet')"
+          >
+            Cadastrar
+          </button>
+        </div>
+        <div id="listaPets" class="w-full flex flex-col gap-4"></div>
+      </section>
+
+      <!-- Lista de Atendimentos -->
+      <section
+        id="lista-atendimentos"
+        class="p-6 flex items-center justify-center flex-col gap-4 w-full"
+        style="display: none"
+      >
+        <h2>Lista de Atendimentos</h2>
+        <div id="listaAtendimentos"></div>
+      </section>
+
+      <!-- Finalizar Atendimento -->
+      <section
+        id="finalizar-atendimento"
+        class="p-6 flex items-center justify-center flex-col gap-4 w-full"
+        style="display: none"
+      >
+        <h2>Finalizar Atendimento</h2>
+        <form id="formFinalizarAtendimento">
+          <input
+            type="text"
+            id="idAtendimento"
+            placeholder="ID do Atendimento"
+          />
+          <button type="submit">Finalizar Atendimento</button>
+        </form>
+      </section>
+
+      <!-- Cancelar Atendimento -->
+      <section
+        id="cancelar-atendimento"
+        class="p-6 flex items-center justify-center flex-col gap-4 w-full"
+        style="display: none"
+      >
+        <h2>Cancelar Atendimento</h2>
+        <form id="formCancelarAtendimento">
+          <input
+            type="text"
+            id="idCancelarAtendimento"
+            placeholder="ID do Atendimento"
+          />
+          <button type="submit">Cancelar Atendimento</button>
+        </form>
+      </section>
+    </div>
+    <footer class="flex flex-col p-6 min-h-[100px] items-center justify-center">
+      <p>&copy; Copyright 2024 - Todos os direitos reservados à FantasticPet</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
