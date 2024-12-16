@@ -139,7 +139,7 @@ function loadAtendimentoPet() {
   petSelect.innerHTML = '<option value="">Selecione o Pet</option>'; // Reseta o select
   pets.forEach((pet) => {
     const option = document.createElement("option");
-    option.value = pet.id;
+    option.value = pet.nome;
     option.textContent = pet.nome;
     petSelect.appendChild(option);
   });

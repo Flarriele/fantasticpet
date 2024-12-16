@@ -18,9 +18,11 @@
   <body class="flex flex-col gap-6 justify-between bg-slate-50">
     <div class="w-full">
       <header class="flex gap-4 justify-between items-center w-full bg-white">
-        <a href="/" class="max-w-[300px]">
-          <img src="./assets/banner-fantasticpets.png" />
-        </a>
+        <div class="max-w-[300px] cursor-pointer" onclick="showSection('home')">
+          <a>
+            <img src="./assets/banner-fantasticpets.png" />
+          </a>
+        </div>
         <form
           id="searchForm"
           class="flex shadow rounded-lg overflow-hidden items-center w-full max-w-[500px]"
@@ -61,57 +63,36 @@
         </form>
         <button
           class="bg-orange-500 px-4 py-3 rounded-lg text-white whitespace-nowrap"
+          onclick="showSection('novo-atendimento')"
         >
           Novo atendimento
         </button>
       </header>
 
       <nav class="menu-container">
-        <div class="menu-item" onclick="showSection('home')">
-          <a>Home</a>
-        </div>
-        <div
-          class="menu-item whitespace-nowrap"
-          onclick="showSection('novo-atendimento')"
-        >
-          <a>Novo Atendimento</a>
-        </div>
-        <div
-          class="menu-item whitespace-nowrap"
-          onclick="showSection('proximo-atendimento')"
-        >
-          <a>Próximo Atendimento</a>
-        </div>
-
         <div
           class="menu-item whitespace-nowrap"
           onclick="showSection('lista-tutores')"
         >
-          <a>Lista Tutores</a>
+          <a>Tutores</a>
         </div>
         <div
           class="menu-item whitespace-nowrap"
           onclick="showSection('lista-pets')"
         >
-          <a>Lista Pets</a>
+          <a>Pets</a>
         </div>
         <div
           class="menu-item whitespace-nowrap"
           onclick="showSection('lista-atendimentos')"
         >
-          <a>Lista Atendimentos</a>
+          <a>Atendimentos</a>
         </div>
         <div
           class="menu-item whitespace-nowrap"
           onclick="showSection('finalizar-atendimento')"
         >
-          <a>Finalizar Atendimentos</a>
-        </div>
-        <div
-          class="menu-item whitespace-nowrap"
-          onclick="showSection('cancelar-atendimento')"
-        >
-          <a>Cancelar Atendimentos</a>
+          <a>Finalizar Atendimento</a>
         </div>
       </nav>
     </div>
